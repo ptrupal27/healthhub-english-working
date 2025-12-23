@@ -20,6 +20,7 @@ return new class extends Migration
             $table->time('appointment_time');
             $table->string('status')->default('confirmed');
             $table->timestamps();
+            $table->unique(['appointment_date', 'appointment_time'], 'unique_appointment_slot');
         });
     }
 

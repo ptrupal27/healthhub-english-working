@@ -19,13 +19,18 @@ export const AdminLogin = () => {
     }
 
     setLoading(true);
-    // Simple authentication - accept any credentials
-    setTimeout(() => {
-      localStorage.setItem("adminLoggedIn", "true");
-      window.location.hash = "#admin-panel";
+    // Check for default admin credentials
+    if (username === "admin" && password === "admin") {
+      setTimeout(() => {
+        localStorage.setItem("adminLoggedIn", "true");
+        window.location.hash = "#admin-panel";
+        setLoading(false);
+        toast({ title: "Success!", description: "Logged in successfully" });
+      }, 1000);
+    } else {
       setLoading(false);
-      toast({ title: "Success!", description: "Logged in successfully" });
-    }, 1000);
+      toast({ title: "Error", description: "Invalid username or password", variant: "destructive" });
+    }
   };
 
   return (
