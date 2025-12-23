@@ -22,7 +22,7 @@ class AppointmentController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'mobile' => 'required|string|max:15',
+            'mobile' => 'required|string|max:10',
             'doctor' => 'required|string|max:255',
             'appointment_date' => 'required|date',
             'appointment_time' => 'required|date_format:H:i',

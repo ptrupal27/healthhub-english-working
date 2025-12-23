@@ -27,9 +27,9 @@ export const AppointmentSection = () => {
     "09:00", "09:30", "10:00", "10:30",
     "11:00", "11:30", "12:00",
     // ❌ 12:30 to 2:00 lunch break
-    "2:00", "2:30", "3:00", "3:30",
-    "4:00", "4:30", "5:00", "5:30",
-    "6:00", "6:30", "7:00",
+    "02:00", "02:30", "03:00", "03:30",
+    "04:00", "04:30", "05:00", "05:30",
+    "06:00", "06:30", "07:00",
   ];
 
   // ✅ Fetch booked slots when date changes
@@ -80,6 +80,17 @@ export const AppointmentSection = () => {
         toast({
           title: "Slot Already Booked",
           description: "Please select another time",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (response.status === 422) {
+        const data = await response.json();
+        const errors = Object.values(data.errors || {}).flat().join(', ');
+        toast({
+          title: "Validation Error",
+          description: errors || "Please check your input",
           variant: "destructive",
         });
         return;
