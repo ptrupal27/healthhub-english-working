@@ -41,7 +41,7 @@ export const DoctorsSection = () => {
               key={index}
               className="flex flex-col md:flex-row items-center gap-80"
             >
-              
+
               {/* Doctor Info */}
               <div className="text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
@@ -60,9 +60,10 @@ export const DoctorsSection = () => {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolor similique aut recusandae ad ipsum. Aliquid, error iusto perspiciatis, cumque quia ut ipsam similique reprehenderit sunt molestiae, obcaecati et ab.
                 </p>
 
-                <Button variant="ghost" asChild>
-                  <a href="#appointment">Book Appointment</a>
+                <Button onClick={() => document.getElementById('appointment')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Book Appointment
                 </Button>
+
               </div>
 
               {/* Doctor Photo */}
@@ -75,7 +76,7 @@ export const DoctorsSection = () => {
           ))}
         </div>
 
-        
+
       </div>
     </section>
   );
